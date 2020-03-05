@@ -119,27 +119,93 @@
      mass = mass - 2; // subtracts 2
      return mass; // returns the new value
  }
-
- /** checking the given vales  */
-//  console.log(getGas(12));
-//  console.log(getGas(14));
-//  console.log(getGas(1969));
-//  console.log(getGas(100756));
-
+// fuel for mass 
 for (let i = 0; i < mass.length; i++) {
-    /** replaces each element with the return value of 
-     * the getGas function
-     */
     mass[i] = getGas(mass[i]);
 }
+
+let totalAddedGas;
+
+// probably the dumbest way to do this: 
+mass.forEach(element => {
+    addedFuel = getGas(element);
+    console.log("addedFuel is: "+addedFuel);
+    if (addedFuel>0) {
+        addedFuel2 = getGas(addedFuel);
+        console.log("addedFuel2 is: "+addedFuel2)
+        if (addedFuel2>0) {
+            addedFuel3 = getGas(addedFuel2);
+            console.log("addedFuel3 is: "+addedFuel3);
+            if (addedFuel3>0) {
+                addedFuel4 = getGas(addedFuel3);
+                console.log("addedFuel4 is: "+addedFuel4);
+                if (addedFuel4>0) {
+                    addedFuel5 = getGas(addedFuel4);
+                    console.log("addedFuel5 is: "+addedFuel5);
+                    if (addedFuel5>0) {
+                        addedFuel6 = getGas(addedFuel5);
+                        console.log("addedFuel6 is:"+addedFuel6);
+                        if (addedFuel6>0) {
+                            addedFuel7 = getGas(addedFuel6);
+                            console.log("addedFuel7 is:"+addedFuel7);
+                            if (addedFuel7<=0) {
+                                let fuelArray = [addedFuel, addedFuel2, addedFuel3,addedFuel4,addedFuel5,addedFuel6];
+                                totalAddedGas = fuelArray.reduce((a,b) => a+b,0);
+                                return totalAddedGas;
+                            }
+                            if (addedFuel7>0) {
+                                addedFuel8 = getGas(addedFuel7);
+                                console.log("addedFuel8 is: "+addedFuel8);
+                                if (addedFuel8<=0) {
+                                    let fuelArray = [addedFuel, addedFuel2, addedFuel3,addedFuel4,addedFuel5,addedFuel6,addedFuel7];
+                                    totalAddedGas = fuelArray.reduce((a,b) => a+b,0);
+                                    return totalAddedGas;
+                                }
+                                if (addedFuel8>0) {
+                                    addedFuel9 = getGas(addedFuel8);
+                                    console.log("addedFuel9 is:" + addedFuel9);
+                                    if (addedFuel9<=0) {
+                                        let fuelArray = [addedFuel, addedFuel2, addedFuel3,addedFuel4,addedFuel5,addedFuel6,addedFuel7,addedFuel8];
+                                        totalAddedGas = fuelArray.reduce((a,b) => a+b,0);
+                                        return totalAddedGas;
+                                    }
+                                    if (addedFuel9>0) {
+                                        addedFuel10 = getGas(addedFuel9);
+                                        console.log("addedFuel10: " + addedFuel10);
+                                        if (addedFuel10<=0) {
+                                            let fuelArray = [addedFuel, addedFuel2, addedFuel3,addedFuel4,addedFuel5,addedFuel6,addedFuel7,addedFuel8,addedFuel9];
+                                            totalAddedGas = fuelArray.reduce((a,b) => a+b,0);
+                                            return totalAddedGas;
+                                        }
+                                        if (addedFuel10>0) {
+                                            addedFuel11 = getGas(addedFuel10);
+                                            console.log("addedFuel11 is: " +addedFuel11);
+                                            if (addedFuel11<=0) {
+                                                let fuelArray = [addedFuel, addedFuel2, addedFuel3,addedFuel4,addedFuel5,addedFuel6,addedFuel7,addedFuel8,addedFuel9,addedFuel10];
+                                                totalAddedGas = fuelArray.reduce((a,b) => a+b,0);
+                                                return totalAddedGas;
+                                            }
+                                        }
+                                    } 
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+});
 
 /** adds all numbers from the mass array */
 total = mass.reduce((a,b) => a+b,0);
 
+console.log(total+totalAddedGas);
+
 /** shows the total fuel needed */
-console.log(total);
+// console.log(total);
 
 /**
  * Wrong answers: 
- * 10396169
+ * 3475192 (too low)
  */
