@@ -124,66 +124,71 @@ for (let i = 0; i < mass.length; i++) {
     mass[i] = getGas(mass[i]);
 }
 
-let totalAddedGas;
+// ^^^left over from part 1
 
+// initializes 2 variables, the first is going to be used as an array but the second only as a number
+let totalAddedGas;
+let totalAddedGasFinal = 0;
+
+/** each element is going to be the added amount of gas for that 
+ * module 
+ */
 // probably the dumbest way to do this: 
 mass.forEach(element => {
-    addedFuel = getGas(element);
-    console.log("addedFuel is: "+addedFuel);
-    if (addedFuel>0) {
-        addedFuel2 = getGas(addedFuel);
-        console.log("addedFuel2 is: "+addedFuel2)
-        if (addedFuel2>0) {
+    addedFuel = getGas(element); // getting the gas needed to propel the gas for the module 
+    if (addedFuel>0) { // if it's more than 0, that gas will need MORE gas to propel it
+        addedFuel2 = getGas(addedFuel); // so we get the gas needed to propel the gas needed to propel the gas for the module 
+        if (addedFuel2>0) { // repeating the process, getting gas for gas for gas and so on and so forth 
             addedFuel3 = getGas(addedFuel2);
-            console.log("addedFuel3 is: "+addedFuel3);
             if (addedFuel3>0) {
                 addedFuel4 = getGas(addedFuel3);
-                console.log("addedFuel4 is: "+addedFuel4);
                 if (addedFuel4>0) {
                     addedFuel5 = getGas(addedFuel4);
-                    console.log("addedFuel5 is: "+addedFuel5);
                     if (addedFuel5>0) {
                         addedFuel6 = getGas(addedFuel5);
-                        console.log("addedFuel6 is:"+addedFuel6);
                         if (addedFuel6>0) {
                             addedFuel7 = getGas(addedFuel6);
-                            console.log("addedFuel7 is:"+addedFuel7);
+                            /** things change here, and the gas can start to be negative or 0. if that is the case, we 
+                             * want to add all that gas (except for the negative/0 value) into an array
+                             */
                             if (addedFuel7<=0) {
+                                // making the array 
                                 let fuelArray = [addedFuel, addedFuel2, addedFuel3,addedFuel4,addedFuel5,addedFuel6];
+                                // adding the array into a variable 
                                 totalAddedGas = fuelArray.reduce((a,b) => a+b,0);
-                                return totalAddedGas;
+                                // adding that variable into a global number to get a grand total 
+                                totalAddedGasFinal = totalAddedGasFinal + totalAddedGas;
                             }
-                            if (addedFuel7>0) {
+                            if (addedFuel7>0) { 
+                                /** repeats same logic as above, just with one more iteration of getting
+                                 * gas
+                                 */
                                 addedFuel8 = getGas(addedFuel7);
-                                console.log("addedFuel8 is: "+addedFuel8);
                                 if (addedFuel8<=0) {
                                     let fuelArray = [addedFuel, addedFuel2, addedFuel3,addedFuel4,addedFuel5,addedFuel6,addedFuel7];
                                     totalAddedGas = fuelArray.reduce((a,b) => a+b,0);
-                                    return totalAddedGas;
+                                    totalAddedGasFinal = totalAddedGasFinal + totalAddedGas;
                                 }
                                 if (addedFuel8>0) {
                                     addedFuel9 = getGas(addedFuel8);
-                                    console.log("addedFuel9 is:" + addedFuel9);
                                     if (addedFuel9<=0) {
                                         let fuelArray = [addedFuel, addedFuel2, addedFuel3,addedFuel4,addedFuel5,addedFuel6,addedFuel7,addedFuel8];
                                         totalAddedGas = fuelArray.reduce((a,b) => a+b,0);
-                                        return totalAddedGas;
+                                        totalAddedGasFinal = totalAddedGasFinal + totalAddedGas;
                                     }
                                     if (addedFuel9>0) {
                                         addedFuel10 = getGas(addedFuel9);
-                                        console.log("addedFuel10: " + addedFuel10);
                                         if (addedFuel10<=0) {
                                             let fuelArray = [addedFuel, addedFuel2, addedFuel3,addedFuel4,addedFuel5,addedFuel6,addedFuel7,addedFuel8,addedFuel9];
                                             totalAddedGas = fuelArray.reduce((a,b) => a+b,0);
-                                            return totalAddedGas;
+                                            totalAddedGasFinal = totalAddedGasFinal + totalAddedGas;
                                         }
                                         if (addedFuel10>0) {
                                             addedFuel11 = getGas(addedFuel10);
-                                            console.log("addedFuel11 is: " +addedFuel11);
                                             if (addedFuel11<=0) {
                                                 let fuelArray = [addedFuel, addedFuel2, addedFuel3,addedFuel4,addedFuel5,addedFuel6,addedFuel7,addedFuel8,addedFuel9,addedFuel10];
                                                 totalAddedGas = fuelArray.reduce((a,b) => a+b,0);
-                                                return totalAddedGas;
+                                                totalAddedGasFinal = totalAddedGasFinal + totalAddedGas;
                                             }
                                         }
                                     } 
@@ -200,10 +205,9 @@ mass.forEach(element => {
 /** adds all numbers from the mass array */
 total = mass.reduce((a,b) => a+b,0);
 
-console.log(total+totalAddedGas);
-
-/** shows the total fuel needed */
-// console.log(total);
+// adds the total gas needed to propel the modules with the total amount of gas needed 
+// to propel that gas 
+console.log(total+totalAddedGasFinal);
 
 /**
  * Wrong answers: 
