@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 
+        Author: Connor J Webdale 
+        Date: 3.17.20
+
+        filename: day3.html
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Manhattan Distance </title>
+    <script src="./day 3/m_distance1.js"></script>
+</head>
+<body>
+    <canvas id="canvas" width="5000" height="5000" style="border:1px solid #000000;">Your browser does not support canvas</canvas>
+    <script>
+        var canvas = document.getElementById("canvas");
+        var draw = canvas.getContext("2d");
+
+        var instruct1 = ["R8","U5","L5","D3"];
+        var instruct2 = ["U7","R6","D4","L4"];
+
+        instruct1.forEach(step => {
+            
+            let letter = step[0]
+            let number = step.splice(0,1);
+            switch(letter) {
+                case ("R"):
+                    console.log(letter);
+                    console.log(number);
+                    break;
+                case ("L"):
+                    console.log(letter);
+                    console.log(number);
+                    break;
+                case ("U"):
+                    console.log(letter);
+                    console.log(number);
+                    break;
+                case ("D"):
+                    console.log(letter);
+                    console.log(number);
+                    break;
+                default: 
+                    console.log("idk");
+            }
+        });
+
+
+        draw.moveTo(0,0);
+        draw.lineTo(200,100);
+        draw.stroke();
+    </script>
+</body>
+</html>
